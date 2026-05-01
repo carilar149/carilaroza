@@ -14,35 +14,36 @@ body {
   overflow-x: hidden;
 }
 
+/* ✨ MORE SPARKLES */
+.sparkle {
+  position: fixed;
+  font-size: 22px;
+  opacity: 0.8;
+  animation: float 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.s1 { top: 5%; left: 5%; }
+.s2 { top: 20%; right: 8%; }
+.s3 { top: 40%; left: 2%; }
+.s4 { top: 65%; right: 5%; }
+.s5 { bottom: 10%; left: 8%; }
+.s6 { bottom: 20%; right: 12%; }
+.s7 { top: 30%; right: 20%; }
+.s8 { bottom: 30%; left: 20%; }
+
 .container {
   max-width: 1000px;
   margin: auto;
   padding: 35px 20px;
-  position: relative;
-  z-index: 2;
 }
 
-.sparkle {
-  position: fixed;
-  font-size: 24px;
-  opacity: 0.75;
-  animation: float 5s ease-in-out infinite;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.s1 { top: 8%; left: 6%; animation-delay: 0s; }
-.s2 { top: 18%; right: 8%; animation-delay: 1s; }
-.s3 { top: 45%; left: 3%; animation-delay: 2s; }
-.s4 { top: 65%; right: 5%; animation-delay: 1.5s; }
-.s5 { bottom: 8%; left: 10%; animation-delay: 2.5s; }
-.s6 { bottom: 18%; right: 12%; animation-delay: 3s; }
-
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-18px) rotate(8deg); }
-}
-
+/* ✨ HERO */
 .hero {
   display: flex;
   gap: 30px;
@@ -58,32 +59,51 @@ body {
   width: 230px;
   border-radius: 24px;
   border: 4px solid #ffb6d9;
+  transition: transform 0.3s;
+}
+.hero img:hover {
+  transform: scale(1.05);
 }
 
+/* ✨ GLOW TEXT */
+.hero h1 {
+  font-size: 44px;
+  margin: 15px 0;
+  background: linear-gradient(90deg, #ff6fb5, #c77dff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(255,150,200,0.4);
+}
+
+/* ✨ EYEBROW */
 .eyebrow {
-  display: inline-block;
   background: #fff0f7;
   color: #ff4fa3;
   padding: 8px 14px;
   border-radius: 999px;
   font-size: 13px;
   font-weight: bold;
+  display: inline-block;
 }
 
-.hero h1 {
-  color: #ff6fb5;
-  font-size: 44px;
-  margin: 15px 0 10px;
-  text-shadow: 2px 2px #ffe0f0;
-}
-
+/* ✨ TAGLINE */
 .tagline {
   font-size: 18px;
   font-weight: bold;
+  color: #ff4fa3;
 }
 
-.intro {
-  line-height: 1.6;
+/* ✨ CARDS */
+.card {
+  background: rgba(255,255,255,0.92);
+  border-radius: 24px;
+  padding: 24px;
+  border: 2px solid #ffd1e6;
+  box-shadow: 0 8px 18px rgba(255, 150, 200, 0.18);
+  transition: transform 0.2s;
+}
+.card:hover {
+  transform: translateY(-5px);
 }
 
 .grid {
@@ -93,22 +113,8 @@ body {
   margin-top: 25px;
 }
 
-.card {
-  background: rgba(255,255,255,0.92);
-  border-radius: 24px;
-  padding: 24px;
-  border: 2px solid #ffd1e6;
-  box-shadow: 0 8px 18px rgba(255, 150, 200, 0.18);
-}
-
 h2 {
   color: #ff6fb5;
-  margin-top: 0;
-}
-
-.card ul {
-  line-height: 1.7;
-  padding-left: 22px;
 }
 
 .skills span {
@@ -121,139 +127,141 @@ h2 {
   font-size: 13px;
 }
 
+/* ✨ EXTRA CUTE NOTE */
 .cute-note {
   background: #fff5fb;
   border-left: 5px solid #ff8ac7;
-  padding: 12px 15px;
+  padding: 12px;
   border-radius: 14px;
   margin-top: 15px;
   font-size: 14px;
 }
 
+/* ✨ ICON ROW */
 .icon-row {
   text-align: center;
   font-size: 34px;
-  margin: 25px 0 5px;
+  margin: 25px 0;
+  animation: float 4s infinite;
 }
 
+/* ✨ FOOTER */
 .footer {
   text-align: center;
-  margin: 28px 0 10px;
-  color: #8b6f91;
+  margin: 28px 0;
   font-weight: bold;
+  color: #8b6f91;
 }
 
-@media (max-width: 700px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .hero h1 {
-    font-size: 34px;
-  }
-
-  .hero img {
-    width: 200px;
-  }
+/* MOBILE */
+@media (max-width:700px){
+  .hero { flex-direction: column; text-align: center; }
+  .hero h1 { font-size: 34px; }
 }
 </style>
 </head>
 
 <body>
 
+<!-- ✨ MORE SPARKLES -->
 <div class="sparkle s1">✨</div>
 <div class="sparkle s2">🌸</div>
 <div class="sparkle s3">💖</div>
 <div class="sparkle s4">⭐</div>
 <div class="sparkle s5">🌷</div>
 <div class="sparkle s6">🐱</div>
+<div class="sparkle s7">💫</div>
+<div class="sparkle s8">🫧</div>
 
 <div class="container">
 
-  <section class="hero">
-    <img src="profile.png" alt="Anime-style portrait of Cari Laroza">
+<section class="hero">
+<img src="profile.png">
 
-    <div>
-      <p class="eyebrow">🌸 Learning & Development • Operations • Program Management</p>
-      <h1>Hi, I’m Cari Laroza ✨</h1>
+<div>
+<p class="eyebrow">🌸 Learning & Development • Operations • Program Management</p>
 
-      <p class="tagline">
-      Teacher at heart, admin by paycheck | Learning Management Systems | Web Admin & Design | Digital Marketing | Chevening Scholar 2018 
-      </p>
+<h1>Hi, I’m Cari ✨</h1>
 
-      <p class="intro">
-        I started as a teacher, and that heart has never really left. Over time, my work grew beyond the classroom into Learning & Development, Operations, and Program Management—supporting training programs, building digital learning platforms, and helping ideas reach thousands of educators. Today, I may not be in front of a class, but I’m still part of the learning—just on a much larger scale.
-      </p>
-    </div>
-  </section>
+<p class="tagline">
+💖 Teacher at heart • Admin by paycheck • Making learning happen behind the scenes
+</p>
 
-  <div class="icon-row">📚 💻 🌷 ✨</div>
+<p>
+I started as a teacher, and that heart has never really left. Today, I support learning on a larger scale—helping build systems, programs, and experiences that reach thousands of educators.
+</p>
+</div>
+</section>
 
-  <section class="grid">
-    <div class="card">
-      <h2>🌸 About Me</h2>
-      <p>
-        I work behind the scenes in early childhood education, helping bring practical, research-based training to professionals around the world. From organizing webinars to building learning platforms and coordinating with expert speakers, I turn ideas into accessible learning experiences.
-      </p>
-      <div class="cute-note">Detail-oriented • Organized • People-centered</div>
-    </div>
+<div class="icon-row">📚 💻 🌷 ✨ 💖 🌸</div>
 
-    <div class="card">
-      <h2>⭐ What I Do</h2>
-      <ul>
-        <li>Manage end-to-end learning programs, webinars, and workshops</li>
-        <li>Coordinate with speakers, experts, and stakeholders</li>
-        <li>Improve LMS, CRM, and automation workflows</li>
-        <li>Create communications that increase engagement</li>
-      </ul>
-    </div>
-  </section>
+<section class="grid">
 
-  <section class="card" style="margin-top:25px;">
-    <h2>🛠 Tools I Use</h2>
-    <div class="skills">
-      <span>Kajabi</span>
-      <span>Zoom</span>
-      <span>HubSpot</span>
-      <span>WordPress</span>
-      <span>SurveyMonkey</span>
-      <span>Zapier</span>
-      <span>Microsoft Excel</span>
-    </div>
-  </section>
+<div class="card">
+<h2>🌸 About Me</h2>
+<p>
+I bring structure, creativity, and care into learning experiences—from webinars to full digital platforms.
+</p>
+<div class="cute-note">✨ Detail-oriented • Organized • People-centered 💖</div>
+</div>
 
-  <section class="card" style="margin-top:25px;">
-    <h2>💼 Experience Highlights</h2>
-    <ul>
-      <li><strong>Young Child Learning</strong> — Marketing & LMS Administrator, managing 50+ annual webinars and workshops</li>
-      <li><strong>Domuschola International School</strong> — Marketing & Admissions Lead</li>
-      <li><strong>Ateneo de Manila University</strong> — Lecturer in Science & Risk Communication</li>
-      <li><strong>UNFPA, TinkerHouse PH, British Society for Immunology</strong> — Project and public engagement roles</li>
-    </ul>
-  </section>
+<div class="card">
+<h2>⭐ What I Do</h2>
+<ul>
+<li>🎤 Manage webinars & learning programs</li>
+<li>🤝 Coordinate speakers & stakeholders</li>
+<li>⚙️ Improve systems & automations</li>
+<li>📢 Create engaging communications</li>
+</ul>
+</div>
 
-  <section class="grid">
-    <div class="card">
-      <h2>🎓 Education</h2>
-      <ul>
-        <li>MSc Science Communication — University of the West of England</li>
-        <li>BA Psychology — De La Salle University–Dasmariñas</li>
-        <li>Diploma in Science Teaching — University of the Philippines</li>
-      </ul>
-    </div>
+</section>
 
-    <div class="card">
-      <h2>💌 Let’s Connect</h2>
-      <p>📍 Antipolo City, Philippines</p>
-      <p>📧 carina_laroza@hotmail.com</p>
-      <p>🔗 linkedin.com/in/cari-laroza-81111a189</p>
-    </div>
-  </section>
+<section class="card">
+<h2>🛠 Tools I Use</h2>
+<div class="skills">
+<span>💻 Kajabi</span>
+<span>🎥 Zoom</span>
+<span>📊 HubSpot</span>
+<span>🌐 WordPress</span>
+<span>📋 SurveyMonkey</span>
+<span>⚡ Zapier</span>
+<span>📈 Excel</span>
+</div>
+</section>
 
-  <div class="footer">
-    Learning has the power to change lives — I help make that journey meaningful and smooth. 💕
-  </div>
+<section class="card">
+<h2>💼 Experience Highlights</h2>
+<ul>
+<li>🌍 Manage 50+ webinars for 25,000+ learners</li>
+<li>🎓 Built digital learning platforms</li>
+<li>📣 Led marketing + engagement strategies</li>
+</ul>
+</section>
+
+<section class="grid">
+
+<div class="card">
+<h2>🎓 Education</h2>
+<ul>
+<li>📘 MSc Science Communication</li>
+<li>🧠 BA Psychology</li>
+<li>🍎 Science Teaching Diploma</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>💌 Let’s Connect</h2>
+<p>📍 Antipolo City</p>
+<p>📧 carina_laroza@hotmail.com</p>
+<p>🔗 LinkedIn</p>
+</div>
+
+</section>
+
+<div class="footer">
+✨ Learning has the power to change lives 💕
+</div>
 
 </div>
 
