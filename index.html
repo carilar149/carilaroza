@@ -14,6 +14,18 @@ body {
   overflow-x: hidden;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(255, 182, 217, 0.35), transparent 18%),
+    radial-gradient(circle at 85% 15%, rgba(199, 125, 255, 0.22), transparent 16%),
+    radial-gradient(circle at 50% 90%, rgba(255, 230, 242, 0.55), transparent 22%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 .container {
   max-width: 1000px;
   margin: auto;
@@ -25,10 +37,11 @@ body {
 .sparkle {
   position: fixed;
   font-size: 24px;
-  opacity: 0.75;
-  animation: float 5s ease-in-out infinite;
+  opacity: 0.8;
+  animation: float 5s ease-in-out infinite, twinkle 2.5s ease-in-out infinite;
   z-index: 1;
   pointer-events: none;
+  filter: drop-shadow(0 0 6px rgba(255, 111, 181, 0.45));
 }
 
 .s1 { top: 8%; left: 6%; animation-delay: 0s; }
@@ -37,10 +50,21 @@ body {
 .s4 { top: 65%; right: 5%; animation-delay: 1.5s; }
 .s5 { bottom: 8%; left: 10%; animation-delay: 2.5s; }
 .s6 { bottom: 18%; right: 12%; animation-delay: 3s; }
+.s7 { top: 30%; right: 18%; animation-delay: 0.8s; }
+.s8 { top: 78%; left: 4%; animation-delay: 1.8s; }
+.s9 { top: 10%; left: 48%; animation-delay: 2.8s; }
+.s10 { bottom: 6%; right: 32%; animation-delay: 3.3s; }
+.s11 { top: 56%; left: 12%; animation-delay: 1.2s; }
+.s12 { top: 36%; right: 3%; animation-delay: 2.2s; }
 
 @keyframes float {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   50% { transform: translateY(-18px) rotate(8deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
 }
 
 .hero {
@@ -51,13 +75,21 @@ body {
   padding: 30px;
   border-radius: 28px;
   border: 3px solid #ffc6e0;
-  box-shadow: 0 10px 25px rgba(255, 150, 200, 0.28);
+  box-shadow: 0 10px 25px rgba(255, 150, 200, 0.28), 0 0 24px rgba(255, 198, 224, 0.55);
+  animation: softAppear 0.8s ease both;
 }
 
 .hero img {
   width: 230px;
   border-radius: 24px;
   border: 4px solid #ffb6d9;
+  box-shadow: 0 0 22px rgba(255, 111, 181, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero img:hover {
+  transform: scale(1.04) rotate(-1deg);
+  box-shadow: 0 0 34px rgba(255, 111, 181, 0.55);
 }
 
 .eyebrow {
@@ -68,13 +100,20 @@ body {
   border-radius: 999px;
   font-size: 13px;
   font-weight: bold;
+  box-shadow: 0 0 14px rgba(255, 182, 217, 0.45);
 }
 
 .hero h1 {
   color: #ff6fb5;
   font-size: 44px;
   margin: 15px 0 10px;
-  text-shadow: 2px 2px #ffe0f0;
+  text-shadow: 0 0 8px rgba(255, 111, 181, 0.45), 2px 2px #ffe0f0;
+  animation: glowPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { text-shadow: 0 0 8px rgba(255, 111, 181, 0.45), 2px 2px #ffe0f0; }
+  50% { text-shadow: 0 0 18px rgba(255, 111, 181, 0.75), 2px 2px #ffe0f0; }
 }
 
 .tagline {
@@ -98,12 +137,25 @@ body {
   border-radius: 24px;
   padding: 24px;
   border: 2px solid #ffd1e6;
-  box-shadow: 0 8px 18px rgba(255, 150, 200, 0.18);
+  box-shadow: 0 8px 18px rgba(255, 150, 200, 0.18), 0 0 18px rgba(255, 230, 242, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: softAppear 0.8s ease both;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(255, 150, 200, 0.28), 0 0 24px rgba(255, 111, 181, 0.22);
+}
+
+@keyframes softAppear {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 h2 {
   color: #ff6fb5;
   margin-top: 0;
+  text-shadow: 0 0 8px rgba(255, 182, 217, 0.55);
 }
 
 .card ul {
@@ -119,6 +171,13 @@ h2 {
   border-radius: 999px;
   margin: 6px;
   font-size: 13px;
+  box-shadow: 0 0 10px rgba(255, 182, 217, 0.35);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.skills span:hover {
+  transform: translateY(-3px) scale(1.04);
+  background: #ffd1e6;
 }
 
 .cute-note {
@@ -128,12 +187,15 @@ h2 {
   border-radius: 14px;
   margin-top: 15px;
   font-size: 14px;
+  box-shadow: 0 0 12px rgba(255, 182, 217, 0.32);
 }
 
 .icon-row {
   text-align: center;
   font-size: 34px;
   margin: 25px 0 5px;
+  animation: float 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(255, 111, 181, 0.35));
 }
 
 .footer {
@@ -141,6 +203,7 @@ h2 {
   margin: 28px 0 10px;
   color: #8b6f91;
   font-weight: bold;
+  text-shadow: 0 0 8px rgba(255, 182, 217, 0.5);
 }
 
 @media (max-width: 700px) {
@@ -168,6 +231,12 @@ h2 {
 <div class="sparkle s4">⭐</div>
 <div class="sparkle s5">🌷</div>
 <div class="sparkle s6">🐱</div>
+<div class="sparkle s7">💫</div>
+<div class="sparkle s8">🫧</div>
+<div class="sparkle s9">🍓</div>
+<div class="sparkle s10">🌙</div>
+<div class="sparkle s11">🪄</div>
+<div class="sparkle s12">💌</div>
 
 <div class="container">
 
@@ -175,11 +244,11 @@ h2 {
     <img src="profile.png" alt="Anime-style portrait of Cari Laroza">
 
     <div>
-      <p class="eyebrow">🌸 Learning & Development • Operations • Program Management</p>
+      <p class="eyebrow">🌸 Learning & Development • Operations • Program Management ✨</p>
       <h1>Hi, I’m Cari Laroza ✨</h1>
 
       <p class="tagline">
-      Teacher at heart, admin by paycheck | Learning Management Systems | Web Admin & Design | Digital Marketing | Chevening Scholar 2018 
+      💖 Teacher at heart, admin by paycheck | Learning Management Systems | Web Admin & Design | Digital Marketing | Chevening Scholar 2018 🌷
       </p>
 
       <p class="intro">
@@ -188,63 +257,63 @@ h2 {
     </div>
   </section>
 
-  <div class="icon-row">📚 💻 🌷 ✨</div>
+  <div class="icon-row">📚 💻 🌷 ✨ 💖 🫧</div>
 
   <section class="grid">
     <div class="card">
-      <h2>🌸 About Me</h2>
+      <h2>🌸 About Me ✨</h2>
       <p>
         I work behind the scenes in early childhood education, helping bring practical, research-based training to professionals around the world. From organizing webinars to building learning platforms and coordinating with expert speakers, I turn ideas into accessible learning experiences.
       </p>
-      <div class="cute-note">Detail-oriented • Organized • People-centered</div>
+      <div class="cute-note">✨ Detail-oriented • Organized • People-centered 💕</div>
     </div>
 
     <div class="card">
-      <h2>⭐ What I Do</h2>
+      <h2>⭐ What I Do 💫</h2>
       <ul>
-        <li>Manage end-to-end learning programs, webinars, and workshops</li>
-        <li>Coordinate with speakers, experts, and stakeholders</li>
-        <li>Improve LMS, CRM, and automation workflows</li>
-        <li>Create communications that increase engagement</li>
+        <li>🎤 Manage end-to-end learning programs, webinars, and workshops</li>
+        <li>🤝 Coordinate with speakers, experts, and stakeholders</li>
+        <li>⚙️ Improve LMS, CRM, and automation workflows</li>
+        <li>📣 Create communications that increase engagement</li>
       </ul>
     </div>
   </section>
 
   <section class="card" style="margin-top:25px;">
-    <h2>🛠 Tools I Use</h2>
+    <h2>🛠 Tools I Use ✨</h2>
     <div class="skills">
-      <span>Kajabi</span>
-      <span>Zoom</span>
-      <span>HubSpot</span>
-      <span>WordPress</span>
-      <span>SurveyMonkey</span>
-      <span>Zapier</span>
-      <span>Microsoft Excel</span>
+      <span>💻 Kajabi</span>
+      <span>🎥 Zoom</span>
+      <span>📊 HubSpot</span>
+      <span>🌐 WordPress</span>
+      <span>📝 SurveyMonkey</span>
+      <span>⚡ Zapier</span>
+      <span>📈 Microsoft Excel</span>
     </div>
   </section>
 
   <section class="card" style="margin-top:25px;">
-    <h2>💼 Experience Highlights</h2>
+    <h2>💼 Experience Highlights 🌟</h2>
     <ul>
-      <li><strong>Young Child Learning</strong> — Marketing & LMS Administrator, managing 50+ annual webinars and workshops</li>
-      <li><strong>Domuschola International School</strong> — Marketing & Admissions Lead</li>
-      <li><strong>Ateneo de Manila University</strong> — Lecturer in Science & Risk Communication</li>
-      <li><strong>UNFPA, TinkerHouse PH, British Society for Immunology</strong> — Project and public engagement roles</li>
+      <li>🌍 <strong>Young Child Learning</strong> — Marketing & LMS Administrator, managing 50+ annual webinars and workshops</li>
+      <li>🏫 <strong>Domuschola International School</strong> — Marketing & Admissions Lead</li>
+      <li>🎓 <strong>Ateneo de Manila University</strong> — Lecturer in Science & Risk Communication</li>
+      <li>🧩 <strong>UNFPA, TinkerHouse PH, British Society for Immunology</strong> — Project and public engagement roles</li>
     </ul>
   </section>
 
   <section class="grid">
     <div class="card">
-      <h2>🎓 Education</h2>
+      <h2>🎓 Education 📚</h2>
       <ul>
-        <li>MSc Science Communication — University of the West of England</li>
-        <li>BA Psychology — De La Salle University–Dasmariñas</li>
-        <li>Diploma in Science Teaching — University of the Philippines</li>
+        <li>📘 MSc Science Communication — University of the West of England</li>
+        <li>🧠 BA Psychology — De La Salle University–Dasmariñas</li>
+        <li>🍎 Diploma in Science Teaching — University of the Philippines</li>
       </ul>
     </div>
 
     <div class="card">
-      <h2>💌 Let’s Connect</h2>
+      <h2>💌 Let’s Connect 🌷</h2>
       <p>📍 Antipolo City, Philippines</p>
       <p>📧 carina_laroza@hotmail.com</p>
       <p>🔗 linkedin.com/in/cari-laroza-81111a189</p>
@@ -252,7 +321,7 @@ h2 {
   </section>
 
   <div class="footer">
-    Learning has the power to change lives — I help make that journey meaningful and smooth. 💕
+    ✨ Learning has the power to change lives — I help make that journey meaningful and smooth. 💕
   </div>
 
 </div>
